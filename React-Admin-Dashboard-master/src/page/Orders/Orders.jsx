@@ -3,12 +3,13 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Box, Button, useTheme } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import Header from "../../components/Header";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
-
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
 function Orders() {
     const [reply, setReply] = useState("");
     const [contactObj, setContactObj] = useState([]);
-  
+    const navigate = useNavigate();
     useEffect(() => {
       const showContactsHandler = async () => {
         try {
@@ -96,7 +97,27 @@ function Orders() {
         }
       });
     }; 
+
+    const handleEditClick = (id) => {
+      // Navigate to the View Drug component with the Drug ID as a parameter
+      navigate(`/ViewContect/${id}`);
+    };
     const columns = [
+      {
+        field: "Edit",
+        headerName: "عرض",
+        width: 100,
+        align: "center",
+        headerAlign: "center",
+        renderCell: (params) => {
+          const { id } = params.row;
+          return (
+            <a onClick={() => handleEditClick(id)}>
+              <FullscreenIcon color="primary" />
+            </a>
+          );
+        },
+      },
       {
         field: "delete",
         headerName: "حذف",

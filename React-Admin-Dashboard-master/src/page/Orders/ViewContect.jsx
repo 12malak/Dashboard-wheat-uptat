@@ -11,17 +11,18 @@ import { Button } from '@mui/material';
 import { Link, useNavigate } from "react-router-dom";
 import { Palette } from '@mui/icons-material';
 
-function ViweEvent() {
+function ViewContent() {
+
   const { id } = useParams();
-  const [eventData, setEventData] = useState([]);
+  const [ContentData, setContentData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    const fetchEvent = async () => {
+    const fetchContent = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/getEvents/${id}`);
+        const response = await fetch(`http://localhost:8000/ViewContact/${id}`);
         if (response.ok) {
           const data = await response.json();
-          setEventData(data);
+          setContentData(data);
         } else {
           throw new Error('Failed to fetch recipe data');
         }
@@ -30,22 +31,23 @@ function ViweEvent() {
       }
     };
 
-    fetchEvent();
+    fetchContent();
   }, [id]);
-  if (!eventData) {
+  if (!ContentData) {
     return <div>Loading...</div>;
   }
 
   const handleGoBack = () => {
-    navigate("/EventTable");
+    navigate("/Orders");
   };
   const theme = useTheme();
   
   return (
-    <Box  dir="rtl" lang="ar" >
+    <>
+     <Box  dir="rtl" lang="ar" >
      <Box sx={{ fontSize: "20px" , fontWeight: "800" }}>
       
-      <Header title=" تفاصيل الندوة    " subTitle=" " />
+      <Header title=" تفاصيل مسجات التواصل    " subTitle=" " />
       </Box>
     <Box sx={{ display: "flex", justifyContent: "center"}}>
     
@@ -53,19 +55,24 @@ function ViweEvent() {
     
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
-       اسم الندوة : {eventData.
+       الاسم  : {ContentData.
 // @ts-ignore
-       eventTitle}
+patientName}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
-      تاريخ الندوة: {eventData.
+       البريد الالكتروني  : {ContentData.
 // @ts-ignore
-      eventDate}
+patientGmail}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
-        وصف عن الندوة : {eventData.
+       رقم الموبايل: {ContentData.
 // @ts-ignore
-        eventDesc}
+phoneNumber}
+        </Typography>
+        <Typography gutterBottom variant="h6" component="div">
+      الرساله النصية: {ContentData.
+// @ts-ignore
+patientMsg}
         </Typography>
        
       </CardContent>
@@ -80,7 +87,8 @@ function ViweEvent() {
     </Card>
     </Box>
     </Box>
-  )
+    </>
+  );
 }
 
-export default ViweEvent
+export default ViewContent;

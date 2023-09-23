@@ -1,7 +1,7 @@
 import React from "react";
 import Row1 from "./Row1";
 import Recipes from "../Recipes/Recipes";
-import Row3 from "./Row3";
+
 
 import Button from "@mui/material/Button";
 import { DownloadOutlined } from "@mui/icons-material";
@@ -34,7 +34,7 @@ const Dashboard = () => {
       <Row1 />
       {/* <Row2 /> */}
       <Recipes/>
-      {/* <Row3 /> */}
+   
     </div>
   );
 };

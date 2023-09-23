@@ -44,7 +44,7 @@ import {
 } from "@mui/icons-material";
 
 const drawerWidth = 200;
-
+const drawerWidthdown = 150;
 const Array1 = [
   { text: "لوحه التحكم", icon: <HomeOutlinedIcon />, path: "/" },
   {
@@ -112,6 +112,7 @@ const SideBar = ({ open, handleDrawerClose }) => {
   return (
     <Drawer
       sx={{
+      
         width: drawerWidth,
         flexShrink: 0,
         "& .MuiDrawer-paper": {

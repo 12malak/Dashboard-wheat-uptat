@@ -38,25 +38,7 @@ function TableContect() {
     console.log("Button clicked for row with id:", id);
     // Add your custom logic here
   };
-  const handleReply = async (messageId) => {
-    try {
-      const requestData = {
-        messageId: messageId,
-        reply: reply,
-      };
-      const response = await fetch("http://localhost:4000/sendReply", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestData),
-      });
-      const data = await response.json();
-      console.log("Reply sent:", data);
-      setReply("");
-    } catch (error) {
-      console.error("Error sending reply:", error);
-    }
-  };
-
+  
 
   const handleDeleteDrug = (id) => {
 
@@ -118,27 +100,7 @@ function TableContect() {
         );
       },
     },
-    {
-        field: "actions",
-      
-        width: 87,
-        align: "center",
-        headerAlign: "center",
-        renderCell: (params) => {
-          const { id } = params.row;
-          return (
-            <a href={`mailto:${id.patientGmail}`}>
-            <Button
-              variant="contained"
-              sx={{  color:"#ffffff"}}
-              onClick={() => handleReply(id.messageId)}
-            >
-              رسالة
-            </Button>
-            </a>
-          );
-        },
-      },
+  
     {
       field: "Governorate",
       headerName: "المحافظة",
@@ -175,7 +137,7 @@ function TableContect() {
       <Box sx={{ textAlign: "right", fontWeight: "800" }}>
       <Header
             title=" الطلبات"
-            subTitle="ستمكنك هذه الصفحة من ارسال رساله للزبون و تخزين جميع الطلبات "
+            subTitle=" "
           />
       </Box>
       <Box sx={{ height: 650, width: "99%", mx: "auto" }}>

@@ -24,7 +24,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const drawerWidth = 200;
-
+const drawerWidthdown = 150;
 
 
 
@@ -66,7 +66,10 @@ const TopBar = ({ open, handleDrawerOpen, setMode }) => {
   return (
     <AppBar
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px` , }}
+        sx={{ width: `calc(100% - ${drawerWidth}px)`,
+         mr: `${drawerWidth}px` ,
+       
+         }}
       >
         <Toolbar>
 

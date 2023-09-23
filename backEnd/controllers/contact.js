@@ -41,3 +41,22 @@ exports.addContact = (req, res, next) => {
     res.status(500).json({ error: err });
   });
 };
+
+
+
+
+exports.ViewContact = (req, res, next) => {
+  const ContactId = req.params.id;
+
+  Contact.findById(ContactId)
+    .then((Contact) => {
+      if (!Contact) {
+        return res.status(404).json({ message: 'contact not found' });
+      }
+      res.status(200).json(Contact);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};

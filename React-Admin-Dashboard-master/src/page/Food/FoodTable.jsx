@@ -174,13 +174,13 @@ const [Count ,setCount]= useState(0);
           align: "right",
           headerAlign: "right",
         },
-        {
-          field: "Number",
-          headerName: "العدد",
-          width: 70,
-          align: "right",
-          headerAlign: "right",
-        },
+        // {
+        //   field: "Number",
+        //   headerName: "العدد",
+        //   width: 70,
+        //   align: "right",
+        //   headerAlign: "right",
+        // },
     
       ];
       const handleSubmit = () => {
